@@ -1,6 +1,11 @@
 # Este programa te ayudará a analizar tablas de agua saturada y calcular la calidad del vapor a partir de la base de datos
 
 import csv
+import os
+
+# Detectar la ruta absoluta de este archivo csv
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+ARCHIVO = os.path.join(BASE_DIR, 'datos_vapor.csv')
 
 # Función para interpolar valores
 def interpolar(x, x1, x2, y1, y2):
@@ -31,8 +36,9 @@ while True:
     if decision_menu == "1": 
 
         # Opción 1: Obtener datos de la base de datos
-        with open('datos_vapor.csv', newline='', encoding='utf-8') as archivo:
-            lector = csv.DictReader(archivo)
+
+        with open(ARCHIVO, newline='', encoding='utf-8') as archivo:
+            lector = csv.DictReader(archivo)    #DictReader aplica la primera linea como cabecera y asigna esos strings como nombre de las columnas
             dato_presion = input("Ingrese la presión del vapor: ")
 
             # Lectura de los datos del CSV
@@ -78,9 +84,9 @@ while True:
             
         # Leer datos del CSV
         datos = []
-        with open('datos_vapor.csv', newline='', encoding='utf-8') as archivo:
+        with open(ARCHIVO, newline='', encoding='utf-8') as archivo:
             lector = csv.reader(archivo)
-            next(lector)  # Saltar cabecera
+            next(lector)  # Saltar la cabecera de la base de datos
             for fila in lector:
                 datos.append([float(x) for x in fila])
 
