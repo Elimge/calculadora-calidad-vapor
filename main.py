@@ -39,7 +39,7 @@ while True:
 
         with open(ARCHIVO, newline='', encoding='utf-8') as archivo:
             lector = csv.DictReader(archivo)    #DictReader aplica la primera linea como cabecera y asigna esos strings como nombre de las columnas
-            dato_presion = input("Ingrese la presión del vapor (Kpa): ")
+            dato_presion = input("Ingrese la presión del vapor (kPa): ")
 
             # Lectura de los datos del CSV
             dato_encontrado = False
